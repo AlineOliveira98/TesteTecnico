@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8f7ae6c60f31fe6458684e7be799e98d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Coffee Mood
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 66e5f90b25132d045b794c5465c564e5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
