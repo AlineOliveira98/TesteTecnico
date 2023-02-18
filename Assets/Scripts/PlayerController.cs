@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public Image fillHealth;
     public SpriteRenderer spriteShip;
     public GameObject bulletPrefab;
-    public GameObject canvasHealthBar;
     public Transform pointerShootFront;
     public Transform pointerShootLatDir;
     public Transform pointerShootLatDir1;
@@ -77,7 +76,6 @@ public class PlayerController : MonoBehaviour
         movementDirection.Normalize();
 
         transform.Translate(movementDirection * speed * inputMagnitude * Time.deltaTime, Space.World);
-        canvasHealthBar.transform.Translate(movementDirection * speed * inputMagnitude * Time.deltaTime, Space.World);
 
         if (movementDirection != Vector2.zero)
         {
