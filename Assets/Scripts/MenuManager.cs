@@ -22,10 +22,6 @@ public class MenuManager : MonoBehaviour
         GetTimeSpawn();
     }
 
-    void Update(){
-
-    }
-
     public void LoadUnloadConfig(){
         panelConfig.SetActive(!panelConfig.activeSelf);
         

@@ -70,10 +70,6 @@ public class Inimigo : MonoBehaviour
         if(!gamePlayManager.gameOver){
             PatrulhaTeste();
         }
-
-        // if(!gamePlayManager.gameOver){
-        //     Patrulha();
-        // }
     }
 
     void PatrulhaTeste(){
@@ -125,75 +121,6 @@ public class Inimigo : MonoBehaviour
                     Attack_Shooter();
                 }
             }
-        }
-
-
-    }
-
-    void Patrulha(){
-        if(pontosRotaLista.Count != 0 && isAlive && target != null){
-            if (Vector2.Distance(transform.position, target.position) <= followPlayerRange && Vector2.Distance(transform.position, target.position) > attackRange){
-                inRangeFollow = true;
-            }
-            else{
-                inRangeFollow = false;
-
-                if(Vector2.Distance(transform.position, target.position) <= attackRange){
-                    inRangeAttack = true;
-                }else{
-                    inRangeAttack = false;
-                }
-            }
-
-            //Se não estiver seguindo, patrulha
-            if(!inRangeFollow && !inRangeAttack){ 
-
-                transform.position = Vector2.MoveTowards(transform.position, pontosRotaLista[indexPontoRota].position, speedMovement * Time.deltaTime);
-                transform.right = pontosRotaLista[indexPontoRota].position - transform.position;
-
-                Vector2 direction = pontosRotaLista[indexPontoRota].position - transform.position;
-                transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
-                
-                if(Vector2.Distance(transform.position, pontosRotaLista[indexPontoRota].position) == 0){
-                    if(indexPontoRota == (pontosRotaLista.Count -1)){
-                        indexPontoRota = 0;
-                    }else{
-                        indexPontoRota++;
-                    }
-                }
-            }else{
-                SeguirPlayer();
-                
-            }
-        }
-    }
-
-    void SeguirPlayer(){
-        if(target != null){
-            if(Vector2.Distance(transform.position, target.position) > stoppingDistance)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-            } else if(Vector2.Distance(transform.position, target.position) > stoppingDistance && Vector2.Distance(transform.position, target.position) > retreaDistance)
-            {
-                transform.position = this.transform.position;
-            }
-            else if (Vector2.Distance(transform.position, target.position) > retreaDistance)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, target.position, -speed * Time.deltaTime);
-            }
-
-            
-
-            Vector2 direction = target.position - transform.position;
-            transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
-
-            if(navioInfo.shipType == ShipType.Shooter){
-                if(inRangeAttack){
-                    Attack_Shooter();
-                }
-            }
-
-            
         }
     }
 
