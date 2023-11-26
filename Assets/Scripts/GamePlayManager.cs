@@ -3,22 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class GamePlayManager : MonoBehaviour
 {
-    public TextMeshProUGUI textTime;
-    public TextMeshProUGUI textPoints;
-    public TextMeshProUGUI textPointsFinish;
-    public GameObject panelFinish;
-    public GameObject effectExplosion;
-    public GameObject[] prefabEnemies;
-    public List<GameObject> rotas;
-    public float timeValue;
-    public float spawnTimeValue;
-    public int points;
-    bool gerandoInimigo;
+    [SerializeField] TextMeshProUGUI textTime;
+    [SerializeField] TextMeshProUGUI textPoints;
+    [SerializeField] TextMeshProUGUI textPointsFinish;
+    [SerializeField] GameObject panelFinish;
+    [SerializeField] GameObject effectExplosion;
+    [SerializeField] GameObject[] prefabEnemies;
+
+    public List<GameObject> routes;
     public bool gameOver;
-    public PlayerController playerController;
+
+    PlayerController playerController;
+    float timeValue;
+    float spawnTimeValue;
+    int points;
+    bool generatingEnemy;
+    
 
     void Start()
     {
@@ -28,7 +32,7 @@ public class GamePlayManager : MonoBehaviour
         spawnTimeValue = PlayerPrefs.GetFloat("tempoSpawn", 15);
 
         InvokeRepeating("SpawnEnemy", 1f, spawnTimeValue);
-        gerandoInimigo = true;
+        generatingEnemy = true;
         gameOver = false;
     }
 
@@ -40,9 +44,9 @@ public class GamePlayManager : MonoBehaviour
         SetGameOver();        
         Cronometro(timeValue);
 
-        if(!gerandoInimigo && rotas.Count != 0 && !gameOver){
+        if(!generatingEnemy && routes.Count != 0 && !gameOver){
             InvokeRepeating("SpawnEnemy", 1f, spawnTimeValue);
-            gerandoInimigo = true;
+            generatingEnemy = true;
         }
     }
 
@@ -84,9 +88,9 @@ public class GamePlayManager : MonoBehaviour
     }
 
     void SpawnEnemy(){
-        if(rotas.Count == 0){
+        if(routes.Count == 0){
             CancelInvoke("SpawnEnemy");
-            gerandoInimigo = false;
+            generatingEnemy = false;
             return;
         }
 

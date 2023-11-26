@@ -16750,17 +16750,13 @@ MonoBehaviour:
   prefabEnemies:
   - {fileID: 780333272878632956, guid: 57b2dedc9ca3fe143a4f7c9e2f3a88df, type: 3}
   - {fileID: 3814117551565723595, guid: e6f572d7d32c93f4691c9ea6b391c62b, type: 3}
-  rotas:
+  routes:
   - {fileID: 1373251940}
   - {fileID: 427931858}
   - {fileID: 1148777803}
   - {fileID: 663478737}
   - {fileID: 73940328}
-  timeValue: 0
-  spawnTimeValue: 0
-  points: 0
   gameOver: 0
-  playerController: {fileID: 0}
 --- !u!1 &1102021286
 GameObject:
   m_ObjectHideFlags: 0

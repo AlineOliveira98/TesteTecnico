@@ -53,10 +53,10 @@ public class Inimigo : MonoBehaviour
         fillHealth.fillAmount = currentHealth / totalHealth;
         isAlive = true;
 
-        indexRota = Random.Range(0, gamePlayManager.rotas.Count);
-        rota = gamePlayManager.rotas[indexRota];
+        indexRota = Random.Range(0, gamePlayManager.routes.Count);
+        rota = gamePlayManager.routes[indexRota];
         rota.GetComponent<RotaController>().ocupada = true;
-        gamePlayManager.rotas.Remove(rota);
+        gamePlayManager.routes.Remove(rota);
 
         pontosRota = rota.GetComponentsInChildren<Transform>();
         pontosRotaLista = new List<Transform>(pontosRota);
@@ -134,10 +134,10 @@ public class Inimigo : MonoBehaviour
             Destroy(gameObject, 0.35f);
             isAlive = false;
             gamePlayManager.SumPoint();
-            gamePlayManager.rotas.Add(rota);
+            gamePlayManager.routes.Add(rota);
             rota.GetComponent<RotaController>().ocupada = false;
 
-            if(gamePlayManager.rotas.Count == 0){
+            if(gamePlayManager.routes.Count == 0){
                 InvokeRepeating("SpawnEnemy", 1f, PlayerPrefs.GetInt("tempoSpawn", 15));
             }
         }
